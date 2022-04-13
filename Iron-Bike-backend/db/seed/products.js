@@ -38,7 +38,7 @@ const nutritions = [
     aspect: "Energy Meals",
     flavor: "Chocolate",
     toTake: "Before Training",
-    vegan: true,
+    vegan: "Yes",
     weight: 0.5,
   },
   {
@@ -48,7 +48,7 @@ const nutritions = [
     aspect: "Bars",
     flavor: "Cookies",
     toTake: "After Training",
-    vegan: false,
+    vegan: "None",
     weight: 0.8,
   },
 ]
