@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
-const Products = require("../models/Products.model");
+const {Products} = require("../models/Products.model");
 
 //  POST /api/Products  -  Creates a new Product
 router.post("/create", async (req, res, next) => {
@@ -32,16 +32,17 @@ router.post("/create", async (req, res, next) => {
     });
     res.status(201).json(response);
   } catch (err) {
-    res.json(err);
+    res.status(500).json({message:'internal error'});
   }
 });
 //  POST /api/Products  -  Find Products
 
 router.get("/list", async (req, res, next) => {
   try {
-    const products = await Products.find();
+    const products = await Products.find()
     res.json(products);
   } catch (err) {
+    console.log(err, 'ERRROER')
     res.json(err);
   }
 });
