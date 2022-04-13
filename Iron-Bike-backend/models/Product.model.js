@@ -66,8 +66,8 @@ const nutritionSchema = new Schema({
     enum: ["Before Training", "During Training", "After Training"],
   },
   vegan: {
-    type: Boolean,
-    default: false,
+    type: String,
+    enum: ["Yes", "None"],
   },
   weight: Number,
 });

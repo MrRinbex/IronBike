@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
-const {Product} = require("../models/Product.model");
+const {Product, Bike} = require("../models/Product.model");
 
 //  POST /api/Products  -  Creates a new Product
 router.post("/create", async (req, res, next) => {
@@ -9,12 +9,14 @@ router.post("/create", async (req, res, next) => {
     brand,
     color,
     quantity,
-    category,
-    Characteristics,
+    categoryBike,
+    frameMaterials,
     weight,
     size,
     image,
     price,
+    equipment,
+    modelYears,
   } = req.body;
 
   try {
@@ -23,12 +25,14 @@ router.post("/create", async (req, res, next) => {
       brand,
       color,
       quantity,
-      category,
-      Characteristics,
+      categoryBike,
+      frameMaterials,
       weight,
       size,
       image,
       price,
+      equipment,
+      modelYears,
     });
     res.status(201).json(response);
   } catch (err) {
@@ -42,7 +46,7 @@ router.get("/list", async (req, res, next) => {
     const products = await Product.find()
     res.json(products);
   } catch (err) {
-    console.log(err, 'ERRROER')
+    console.log(err, 'ERROR')
     res.json(err);
   }
 });
