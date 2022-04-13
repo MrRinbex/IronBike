@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
-const {Products} = require("../models/Products.model");
+const {Product} = require("../models/Product.model");
 
 //  POST /api/Products  -  Creates a new Product
 router.post("/create", async (req, res, next) => {
@@ -18,7 +18,7 @@ router.post("/create", async (req, res, next) => {
   } = req.body;
 
   try {
-    const response = await Products.create({
+    const response = await Product.create({
       productName,
       brand,
       color,
@@ -39,7 +39,7 @@ router.post("/create", async (req, res, next) => {
 
 router.get("/list", async (req, res, next) => {
   try {
-    const products = await Products.find()
+    const products = await Product.find()
     res.json(products);
   } catch (err) {
     console.log(err, 'ERRROER')
@@ -58,7 +58,7 @@ router.put("/update/:productsId", async (req, res, next) => {
       return;
     }
 
-    const products = await Products.findByIdAndUpdate(productsId, req.body, {
+    const products = await Product.findByIdAndUpdate(productsId, req.body, {
       new: true,
     });
 
@@ -79,7 +79,7 @@ router.delete("/delete/:productsId", async (req, res, next) => {
       return;
     }
 
-    await Brand.findByIdAndRemove(productsId);
+    await Product.findByIdAndRemove(productsId);
 
     res.status(204).send();
   } catch (err) {

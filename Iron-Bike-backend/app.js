@@ -27,7 +27,7 @@ app.use("/api/users", userRoutes);
 const brandRoutes = require("./routes/brand.routes");
 app.use("/api/brand", brandRoutes);
 
-const productsRoutes = require("./routes/products.routes");
+const productsRoutes = require("./routes/product.routes");
 app.use("/api/products", productsRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
