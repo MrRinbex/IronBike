@@ -1,9 +1,11 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const User = require("../models/User.model");
+const { isAuthenticated } = require('../middleware/jwt.middleware')
+
 
 //  POST /api/users  -  Creates a new user
-router.post("/create", async (req, res, next) => {
+router.post("/create", isAuthenticated, async (req, res, next) => {
   const { username, email, password } = req.body;
 
   try {
@@ -35,7 +37,7 @@ router.put("/update/:userId", async (req, res, next) => {
       return;
     }
 
-    const user = await Project.findByIdAndUpdate(userId, req.body, {
+    const user = await User.findByIdAndUpdate(userId, req.body, {
       new: true,
     });
 

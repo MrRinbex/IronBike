@@ -5,15 +5,13 @@ const { isAuthenticated } = require("../middleware/jwt.middleware");
 const User = require("../models/User.model");
 
 router.get("/signup", async (req, res, next) => {
-  console.log("COUCOU");
 
-  return res.send("coucou ça marche");
+  return res.send("it work");
 });
 
 router.get("/login", async (req, res, next) => {
-    console.log("COUCOU");
   
-    return res.send("Login aussi");
+    return res.send("Login work");
   });
 
 router.post("/signup", async (req, res, next) => {
@@ -37,13 +35,12 @@ router.post("/signup", async (req, res, next) => {
         
         res.status(201).json(createdUser);
     }catch(error){
-            console.log(error, 'ERREUR')
+            console.log(error)
     }
 
 });
 
 router.post("/login", async (req, res, next) => {
-  console.log("COUCOU");
 
   const { email, password } = req.body;
 
@@ -68,6 +65,8 @@ router.post("/login", async (req, res, next) => {
     res.status(401).json({ error: "Credentials not found" });
   }
 });
+
+// didn't work for me need to check
 
 router.get("/verify", isAuthenticated, (req, res, next) => {
   res.status(200).json(req.payload);
