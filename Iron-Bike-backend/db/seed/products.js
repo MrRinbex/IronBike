@@ -53,6 +53,7 @@ const nutritions = [
 ]
 
 const createProducts = async (req, res, next) => {
+  await Clothes.deleteMany()
   await Bike.deleteMany()
   await Nutrition.deleteMany()
 
