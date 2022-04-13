@@ -1,6 +1,7 @@
 const connection = require('../index')
 const { default: mongoose } = require('mongoose')
-const {Products, Bike, Accessories, Nutrition, Clothes} = require('../../models/products.model')
+const {Product, Bike, Accessory, Nutrition, Clothes} = require('../../models/Product.model')
+const Brand = require('../../models/Brand.model')
 
 const bikes = [
   {
@@ -53,14 +54,20 @@ const nutritions = [
 ]
 
 const createProducts = async (req, res, next) => {
-  await Clothes.deleteMany()
-  await Bike.deleteMany()
-  await Nutrition.deleteMany()
+  await Product.deleteMany()
 
-  const bike = await Bike.create(bikes)
-  const nutrition = await Nutrition.create(nutritions)
+  const willierBrand = await Brand.findOne({name: "Willier Triestina"}) 
+  bikes[0].brand = willierBrand._id
 
-  const products = await Products.find()
+  await Bike.create(bikes)
+
+  const isostarBrand = await Brand.findOne({name: "Isostar"}) 
+  nutritions[0].brand = isostarBrand._id
+
+
+  await Nutrition.create(nutritions)
+
+  const products = await Product.find()
   console.log(products)
 
   

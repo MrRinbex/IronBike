@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const productsSchema = new Schema({
+const productSchema = new Schema({
   productName: {
     type: String,
     required: true,
@@ -16,7 +16,7 @@ const productsSchema = new Schema({
   price: Number,
 });
 
-const Products = model("Products", productsSchema);
+const Product = model("Product", productSchema);
 
 const bikeSchema = new Schema({
   categoryBike: {
@@ -42,16 +42,16 @@ const bikeSchema = new Schema({
   modelYears: Number,
 });
 
-const Bike = Products.discriminator("Bike", bikeSchema);
+const Bike = Product.discriminator("Bike", bikeSchema);
 
-const accessoriesSchema = new Schema({
+const accessorySchema = new Schema({
   features: {
     type: String,
     enum: ["GPS", "Bluetooth", "Heart Rate Monitor", "Wireless"],
   },
 });
 
-const Accessories = Products.discriminator("Accessories", accessoriesSchema);
+const Accessory = Product.discriminator("Accessory", accessorySchema);
 
 const nutritionSchema = new Schema({
   aspect: {
@@ -71,7 +71,7 @@ const nutritionSchema = new Schema({
   },
   weight: Number,
 });
-const Nutrition = Products.discriminator("Nutrition", nutritionSchema);
+const Nutrition = Product.discriminator("Nutrition", nutritionSchema);
 
 const clothesSchema = new Schema({
   sexCategory: {
@@ -88,16 +88,16 @@ const clothesSchema = new Schema({
   },
   ReflectiveEquipment: {
     type: String,
-    enum: ["yes", "None"],
+    enum: ["Yes", "None"],
   },
   rainProtection: {
     type: String,
-    enum: ["yes", "None"],
+    enum: ["Yes", "None"],
   },
   color: {
     type: String,
   },
 });
-const Clothes = Products.discriminator("Clothes", clothesSchema);
+const Clothes = Product.discriminator("Clothes", clothesSchema);
 
-module.exports = { Products, Bike, Accessories, Nutrition, Clothes };
+module.exports = { Product, Bike, Accessory, Nutrition, Clothes };
