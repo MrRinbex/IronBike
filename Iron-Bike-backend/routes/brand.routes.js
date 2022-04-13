@@ -40,7 +40,7 @@ router.put("/update/:brandId", async (req, res, next) => {
       return;
     }
 
-    const brand = await Project.findByIdAndUpdate(brandId, req.body, {
+    const brand = await Brand.findByIdAndUpdate(brandId, req.body, {
       new: true,
     });
 

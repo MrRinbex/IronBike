@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
-const {Product} = require("../models/Product.model");
+const { Product } = require("../models/Product.model");
 
 //  POST /api/Products  -  Creates a new Product
 router.post("/create", async (req, res, next) => {
@@ -9,12 +9,14 @@ router.post("/create", async (req, res, next) => {
     brand,
     color,
     quantity,
-    category,
-    Characteristics,
+    categoryBike,
+    frameMaterials,
     weight,
     size,
     image,
     price,
+    equipment,
+    modelYears,
   } = req.body;
 
   try {
@@ -23,26 +25,39 @@ router.post("/create", async (req, res, next) => {
       brand,
       color,
       quantity,
-      category,
-      Characteristics,
+      categoryBike,
+      frameMaterials,
       weight,
       size,
       image,
       price,
+      equipment,
+      modelYears,
     });
     res.status(201).json(response);
   } catch (err) {
-    res.status(500).json({message:'internal error'});
+    res.status(500).json({ message: "internal error" });
   }
 });
 //  POST /api/Products  -  Find Products
 
 router.get("/list", async (req, res, next) => {
   try {
-    const products = await Product.find()
-    res.json(products);
+    const queryProductName = req.query.productName;
+  
+    let queryProducts;
+
+    if (queryProductName) {
+      console.log(queryProductName);
+      queryProducts = await Product.find({
+        productName: queryProductName,
+      });
+    } else {
+      queryProducts = await Product.find();
+    }
+    res.json(queryProducts);
   } catch (err) {
-    console.log(err, 'ERRROER')
+    console.log(err, "ERROR");
     res.json(err);
   }
 });
