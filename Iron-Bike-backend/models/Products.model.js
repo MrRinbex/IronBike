@@ -39,6 +39,7 @@ const bikeSchema = new Schema({
     type: String,
   },
   weight: Number,
+  modelYears: Number,
 });
 
 const Bike = Products.discriminator("Bike", bikeSchema);
@@ -59,15 +60,6 @@ const nutritionSchema = new Schema({
   },
   flavor: {
     type: String,
-    enum: [
-      "Chocolate",
-      "Banana",
-      "Vanilla",
-      "Cookies",
-      "Peanut",
-      "Summer Fruits",
-      "Mango",
-    ],
   },
   toTake: {
     type: String,
