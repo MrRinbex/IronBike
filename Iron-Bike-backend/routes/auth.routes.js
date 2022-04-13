@@ -5,13 +5,11 @@ const { isAuthenticated } = require("../middleware/jwt.middleware");
 const User = require("../models/User.model");
 
 router.get("/signup", async (req, res, next) => {
-  console.log("COUCOU");
 
   return res.send("coucou ça marche");
 });
 
 router.get("/login", async (req, res, next) => {
-    console.log("COUCOU");
   
     return res.send("Login aussi");
   });
@@ -43,7 +41,6 @@ router.post("/signup", async (req, res, next) => {
 });
 
 router.post("/login", async (req, res, next) => {
-  console.log("COUCOU");
 
   const { email, password } = req.body;
 
