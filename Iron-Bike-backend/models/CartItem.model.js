@@ -5,6 +5,7 @@ const cartItemSchema = new Schema({
   quantity: { type: Number, defautl: 1, require: true },
   unitPrice: { type: Number, require: true },
 
+
 });
 
 cartItemSchema.methods.getTotalPrice = ()=>this.unitPrice * this.quantity;

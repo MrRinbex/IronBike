@@ -7,17 +7,7 @@ const OrderSchema = new Schema(
     paymentStatus: { type: String, default: "PENDING", require: true },
     totalItems: Number,
     totalAmount: Number,
-    type: String,
-    shipTo: {
-        fullname: { type: String, require: true },
-        address: {
-            streetNumber: { type: String },
-            streetName: { type: String, require: true },
-            postalCode: { type: String, require: true },
-            city: { type: String, require: true },
-            country: { type: String, require: true },
-        },
-    },
+    address: { type: Object },
     orderStatus: {
       enum: ["process", "shipped", "delivered", "canceled", "refund"],
     },
