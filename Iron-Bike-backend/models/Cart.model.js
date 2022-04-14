@@ -15,7 +15,7 @@ const cartSchema = new Schema(
       },
     ],
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 
 const Cart = model("Cart", cartSchema);
