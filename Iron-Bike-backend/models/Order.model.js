@@ -1,12 +1,25 @@
 const { Schema, model } = require("mongoose");
 
-const OrderSchema = new Schema(
+const orderSchema = new Schema(
   {
-    userId: { type: Schema.Types.ObjectId, ref: "User" },
-    cartId: { type: Schema.Types.ObjectId, ref: "Cart" },
-    paymentStatus: { type: String, default: "PENDING", require: true },
+    userId: { type: Schema.Types.ObjectId, ref: "User", required:true},
+    paymentStatus: { type: String, default: "PENDING"},
+    products:[
+      {
+        products:{
+          type:String
+        },
+        quantity:{
+          type:Number,
+          default:1,
+        }
+      }
+    ],
     totalItems: Number,
-    totalAmount: Number,
+    amount:{type:Number, required:true},
+    voucher:String,
+    discount:Number,
+    amountToPay: {type:Number, required:true},
     address: { type: Object },
     orderStatus: {
       enum: ["process", "shipped", "delivered", "canceled", "refund"],
@@ -17,6 +30,10 @@ const OrderSchema = new Schema(
   }
 );
 
-const Order = model("Order", cartItemSchema);
+orderSchema.methods.setAmountToPay = function(){
+  return this.amount - this.discount
+}
+
+const Order = model("Order", orderSchema);
 
 module.exports = Order;
