@@ -21,6 +21,7 @@ const userSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    accessToken:String,
   },
   {
     timestamps: true,
