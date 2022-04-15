@@ -1,9 +1,11 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
+const { isAuthenticated } = require("../middleware/jwt.middleware");
 const { Product } = require("../models/Product.model");
 
 //  POST /api/Products  -  Creates a new Product
-router.post("/create", async (req, res, next) => {
+router.post("/create", isAuthenticated, async (req, res, next) => {
+  console.log(req.payload, "payload");
   const {
     productName,
     brand,
@@ -44,7 +46,7 @@ router.post("/create", async (req, res, next) => {
 router.get("/list", async (req, res, next) => {
   try {
     const queryProductName = req.query.productName;
-  
+
     let queryProducts;
 
     if (queryProductName) {
