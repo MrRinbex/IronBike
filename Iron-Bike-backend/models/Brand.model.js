@@ -1,9 +1,11 @@
-const { Schema, model } = require("mongoose");
-
+const { Schema, model, mongoose } = require("mongoose");
+const slug = require("mongoose-slug-generator");
+mongoose.plugin(slug);
 const brandSchema = new Schema({
   name: {
     type: String,
   },
+  slug: { type: String, slug: "name" },
   brandLogo: {
     type: String,
   },
