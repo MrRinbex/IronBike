@@ -43,7 +43,7 @@ router.post("/create", isAuthenticated, async (req, res, next) => {
 });
 //  POST /api/Products  -  Find Products
 
-router.get("/list", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const queryProductName = req.query.productName;
 
