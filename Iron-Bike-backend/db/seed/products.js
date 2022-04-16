@@ -8,7 +8,6 @@ const {
   Clothes,
 } = require("../../models/Product.model");
 const Brand = require("../../models/Brand.model");
-const { faker } = require("@faker-js/faker");
 
 const bikes = [
   {
@@ -104,27 +103,6 @@ const bikeBrands = [
   { name: "Sram", brandLogo: "", headquarters: "", madeIn: "" },
 ];
 
-const size = ["S", "M", "L"];
-
-const frameMaterials = ["aluminum", "carbon", "titanium"];
-
-function getOneBrand(brands) {
-  let brand = brands[Math.floor(Math.random() * brands.length)].name;
-  return brand;
-}
-const bikeCats = [
-  "Road Bike",
-  "Mountain Bike",
-  "City Bike",
-  "E-Bike",
-  "Low Rider",
-];
-
-function getOneBikeCat(bikeCats) {
-  let catBike = bikeCats[Math.floor(Math.random() * bikeCats.length)];
-  return catBike;
-}
-
 const createProducts = async (req, res, next) => {
   await Product.deleteMany();
 
@@ -142,34 +120,9 @@ const createProducts = async (req, res, next) => {
   console.log(products);
 };
 
-// choose a quantity when we call the function
-async function generateFakeBikes(quantity) {
-  const fakeBikes = [];
-  for (let i = 0; i < quantity; i++) {
-    const bikename = faker.vehicle.bicycle();
-    let bike = {
-      productName: bikename,
-      brand: await getOneBrand(bikeBrands),
-      quantity: Math.floor(Math.random() * 20),
-      image: "https://picsum.photos/300/300",
-      price: faker.commerce.price(200, 4000),
-      categoryBike: await getOneBikeCat(bikeCats),
-      size: size[Math.floor(Math.random() * size.length)],
-      frameMaterials:
-        frameMaterials[Math.floor(Math.random() * frameMaterials.length)],
-      color: faker.commerce.color(),
-      weight: faker.datatype.number({ min: 1, max: 25, precision: 0.01 }),
-      modelYears: faker.datatype.number({ min: 1997, max: 2022 }),
-    };
-    fakeBikes.push(bike);
-  }
-  return fakeBikes;
-}
-
 const perform = async () => {
   await connection;
   await createProducts();
-  await generateFakeBikes(10);
   await mongoose.connection.close();
 };
 perform();
