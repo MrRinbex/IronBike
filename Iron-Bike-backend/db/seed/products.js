@@ -20,8 +20,7 @@ const bikes = [
     equipment: "Campagnolo",
     color: "Grey, Blue",
     weight: 8.37,
-    image:
-      "https://res.cloudinary.com/ironbike/image/upload/v1649846501/Products/Bike/Road%20Bike/Wilier_0_SL_Disc_Chorus_2x12_grau_blau_600x600_vrnca6.jpg",
+    image:"https://res.cloudinary.com/ironbike/image/upload/v1649846501/Products/Bike/Road%20Bike/Wilier_0_SL_Disc_Chorus_2x12_grau_blau_600x600_vrnca6.jpg",
     modelYears: 2022,
   },
   {
@@ -34,74 +33,36 @@ const bikes = [
     equipment: "Campagnolo",
     color: "white",
     weight: 11,
+    image:"https://res.cloudinary.com/ironbike/image/upload/v1649846501/Products/Bike/Road%20Bike/Wilier_0_SL_Disc_Chorus_2x12_grau_blau_600x600_vrnca6.jpg",
+    modelYears: 2020,
   },
 ];
 
 const nutritions = [
   {
-    productName: "Bcaa",
+    productName: "ISOSTAR POWER TABS Energy Drink",
     quantity: 300,
     price: 11,
     aspect: "Energy Meals",
-    flavor: "Chocolate",
+    flavor: "Lemon",
     toTake: "Before Training",
     vegan: "Yes",
     weight: 0.5,
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1649846405/Products/Nutrition/Drinks/ISOSTAR_POWERTABS_Energy_Drink_Tube_of_10_Tabs_of_12_g_q0mznx.jpg",
   },
   {
-    productName: "Carbo Protein",
+    productName: "STC CARBO PROTEIN",
     quantity: 100,
     price: 43,
     aspect: "Bars",
     flavor: "Cookies",
     toTake: "After Training",
-    vegan: "None",
-    weight: 0.8,
+    vegan: "Yes",
+    weight: 4.8,
+    image:"https://res.cloudinary.com/ironbike/image/upload/v1649846404/Products/Nutrition/Drinks/STC_NUTRITION_VEGETAL_PROTEIN_Recovery_Drink_750_g_oqjwvm.jpg",
   },
 ];
 
-const bikeBrands = [
-  {
-    name: "Shimano",
-    brandLogo:
-      "https://res.cloudinary.com/ironbike/image/upload/v1649861921/Products/Brand/Shimano.svg_uearaw.png",
-    headquarters: "Japan",
-    madeIn: "Japan",
-  },
-  {
-    name: "Willier Triestina",
-    brandLogo:
-      "https://res.cloudinary.com/ironbike/image/upload/v1649861921/Products/Brand/Wilier_triestina_logo_gvptdy.png",
-    headquarters: "Italy",
-    madeIn: "Italy",
-  },
-  {
-    name: "Pinarello",
-    brandLogo:
-      "https://res.cloudinary.com/ironbike/image/upload/v1649861921/Products/Brand/Pinarello_logo.svg_pdyfmc.png",
-    headquarters: "Italy",
-    madeIn: "Italy",
-  },
-  {
-    name: "Isostar",
-    brandLogo:
-      "https://res.cloudinary.com/ironbike/image/upload/v1649861921/Products/Brand/Isostar_logo.svg_aktlsc.png",
-    headquarters: "France",
-    madeIn: "France",
-  },
-  { name: "Trek", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Red Bull", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Shimano", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Cannondale", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Giant", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Specialized", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Canyon", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "YT", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Fuji", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "GT", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Campagnolo", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Sram", brandLogo: "", headquarters: "", madeIn: "" },
-];
 
 const createProducts = async (req, res, next) => {
   await Product.deleteMany();

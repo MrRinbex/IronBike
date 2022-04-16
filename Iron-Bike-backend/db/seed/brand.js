@@ -9,6 +9,7 @@ const brands = [
       "https://res.cloudinary.com/ironbike/image/upload/v1649861921/Products/Brand/Shimano.svg_uearaw.png",
     headquarters: "Japan",
     madeIn: "Japan",
+    foundationYear: 1921,
   },
   {
     name: "Willier Triestina",
@@ -16,6 +17,7 @@ const brands = [
       "https://res.cloudinary.com/ironbike/image/upload/v1649861921/Products/Brand/Wilier_triestina_logo_gvptdy.png",
     headquarters: "Italy",
     madeIn: "Italy",
+    foundationYear: 1906,
   },
   {
     name: "Pinarello",
@@ -23,25 +25,17 @@ const brands = [
       "https://res.cloudinary.com/ironbike/image/upload/v1649861921/Products/Brand/Pinarello_logo.svg_pdyfmc.png",
     headquarters: "Italy",
     madeIn: "Italy",
+    foundationYear: 1952,
   },
   {
     name: "Isostar",
     brandLogo:
       "https://res.cloudinary.com/ironbike/image/upload/v1649861921/Products/Brand/Isostar_logo.svg_aktlsc.png",
-    headquarters: "France",
+    headquarters: "Suisse",
     madeIn: "France",
+    foundationYear: 1977,
   },
-  { name: "Trek", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Red Bull", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Cannondale", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Giant", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Specialized", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Canyon", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "YT", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Fuji", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "GT", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Campagnolo", brandLogo: "", headquarters: "", madeIn: "" },
-  { name: "Sram", brandLogo: "", headquarters: "", madeIn: "" },
+
 ];
 
 const createBrands = async (req, res, next) => {

@@ -37,7 +37,7 @@ const isNotAuthenticated = (req, res, next) => {
     if (token) {
       // console.log("YA UN TOKEN ", token);
       jwt.verify(token, SECRET, function (error, decoded) {
-        console.log(error, "erroe jwt");
+        console.log(error, "error jwt");
         if (error?.name === "TokenExpiredError" || error) {
           next();
         }
@@ -47,7 +47,7 @@ const isNotAuthenticated = (req, res, next) => {
       });
     }
   } catch (error) {
-    res.status(500).json({ message: "Oups something get wrong, try again !" });
+    res.status(500).json({ message: "Oops something get wrong, try again !" });
   }
 };
 
