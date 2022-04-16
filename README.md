@@ -1,4 +1,4 @@
-# IronBike Api
+# IronBike E-Shop Api
 
 # Getting Started with Create React App
 
