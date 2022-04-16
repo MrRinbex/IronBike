@@ -19,6 +19,7 @@ const productSchema = new Schema({
 const Product = model("Product", productSchema);
 
 const bikeSchema = new Schema({
+  bikeBrand: String,
   categoryBike: {
     type: String,
     enum: ["Road Bike", "Mountain Bike", "City Bike", "E-Bike", "Low Rider"],
@@ -31,10 +32,10 @@ const bikeSchema = new Schema({
     type: String,
     enum: ["aluminum", "carbon", "titanium"],
   },
-  equipment: {
-    type: String,
-    enum: ["Shimano", "Campagnolo", "Sram"],
-  },
+  // equipment: {
+  //   type: String,
+  //   enum: ["Shimano", "Campagnolo", "Sram"],
+  // },
   color: {
     type: String,
   },
