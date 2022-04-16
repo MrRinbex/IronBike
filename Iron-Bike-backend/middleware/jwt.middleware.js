@@ -28,7 +28,7 @@ function getTokenFromHeaders(req) {
 
 const isNotAuthenticated = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
-  console.log(req.headers, "HEADERS");
+
   try {
     if (!req.headers.authorization) {
       // console.log("pas de token", token);
