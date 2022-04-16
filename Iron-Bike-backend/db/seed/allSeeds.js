@@ -4,7 +4,6 @@ dotenv.config();
 const MONGO_URI = process.env.MONGODB_URI;
 const MONGO_LOCAL_URI = process.env.MONGO_LOCAL_URI; // DATABASE LOCAL
 const Brand = require("../../models/brand.model");
-// const Nutrition = require("../../models/")
 const { Product, Bike, Nutrition } = require("../../models/Product.model");
 const { faker } = require("@faker-js/faker");
 
@@ -187,7 +186,9 @@ async function getBrandsIdFromDB(allBrandsArrayFromDB) {
 async function seedDB() {
   try {
     await Brand.deleteMany();
-    await Product.deleteMany({ __t: "Bike" });
+    // await Product.deleteMany({ __t: "Bike" });
+    await Product.deleteMany();
+
     // await User.deleteMany();
     // await Product.deleteMany();
     // await Cart.deleteMany();
@@ -196,7 +197,7 @@ async function seedDB() {
     // R E A L _ D A T A //
     const leoBikes = await Bike.create(realBikes);
     const brandsDB = await Brand.create(brands);
-    // const nutrition = await Nutrition.create(nutritions);
+    const nutrition = await Nutrition.create(nutritions);
 
     // G E T _ B R A N D S _ T O _ C R E A T E _ O T H E R S _ P R O D U C T S
     const allBrands = await Brand.find();
