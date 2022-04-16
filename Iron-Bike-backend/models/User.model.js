@@ -6,8 +6,8 @@ const userSchema = new Schema(
       type: String,
       unique: true,
       sparse: true,
-
     },
+    slug: { type: String, slug: "username" },
     email: {
       type: String,
       unique: true,
@@ -21,7 +21,7 @@ const userSchema = new Schema(
       type: Boolean,
       default: false,
     },
-    accessToken:String,
+    accessToken: String,
   },
   {
     timestamps: true,

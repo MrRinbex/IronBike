@@ -1,4 +1,7 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, mongoose } = require("mongoose");
+const slug = require("mongoose-slug-generator");
+
+mongoose.plugin(slug);
 
 const productSchema = new Schema(
   {
@@ -6,6 +9,7 @@ const productSchema = new Schema(
       type: String,
       required: true,
     },
+    slug: { type: String, slug: "productName" },
     brand: {
       type: Schema.Types.ObjectId,
       ref: "Brand",
@@ -17,7 +21,7 @@ const productSchema = new Schema(
     price: {
       type: Number,
       required: true,
-    }
+    },
   },
   {
     timestamps: true,
