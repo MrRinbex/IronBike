@@ -40,7 +40,6 @@ const brands = [
 
 const createBrands = async (req, res, next) => {
   await Brand.deleteMany();
-
   await Brand.create(brands);
 
   const allBrands = await Brand.find();
