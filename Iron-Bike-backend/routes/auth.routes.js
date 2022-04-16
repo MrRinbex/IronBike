@@ -6,15 +6,17 @@ const {
   isNotAuthenticated,
 } = require("../middleware/jwt.middleware");
 const User = require("../models/User.model");
-
+const { SignAndLogErrors } = require("../error-handling/SignAndLogErrors");
+//
 router.post("/signup", isNotAuthenticated, async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
-    // console.log(req.body, "PASS");
 
     // Check if email or password or name are provided as empty string
-    if (email === "" || password === "" || username === "") {
-      res.status(400).json({ message: "Provide email, password and username" });
+    if (email === "" || username === "" || password === "") {
+      const error = SignAndLogErrors("none", email, username);
+      res.status(406).json(error);
+
       return;
     }
 
@@ -24,32 +26,30 @@ router.post("/signup", isNotAuthenticated, async (req, res, next) => {
       password.includes(" ") ||
       username.includes(" ")
     ) {
-      res.status(400).json({
-        message: "No whitespace allowed in email, password or username",
-      });
+      const error = SignAndLogErrors("whiteSpace", username, email);
+      res.status(406).json(error);
       return;
     }
     // Use regex to validate the email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!emailRegex.test(email)) {
-      res
-        .status(400)
-        .json({ message: "Please provide a valid email address." });
+      const error = SignAndLogErrors("email", email, username);
+      res.status(406).json(error.message);
       return;
     }
 
     const passwordRegex = /.{6,}/;
     if (!passwordRegex.test(password)) {
-      res
-        .status(400)
-        .json({ message: "Password must have at least 6 characters." });
+      const error = SignAndLogErrors("password");
+      res.status(406).json(error.message);
       return;
     }
 
     const foundUser = await User.findOne({ email });
 
     if (foundUser) {
-      res.status(400).json({ error: "User already exists" });
+      const error = SignAndLogErrors("exist", "", email);
+      res.status(406).json(error.message);
       return;
     }
 
@@ -65,8 +65,6 @@ router.post("/signup", isNotAuthenticated, async (req, res, next) => {
 
     console.log(createdUser, "new user");
 
-    // const { email, username, _id } = createdUser
-
     // Send user object without password
     const user = {
       _id: createdUser._id,
@@ -77,7 +75,8 @@ router.post("/signup", isNotAuthenticated, async (req, res, next) => {
 
     res.status(201).json(user);
   } catch (error) {
-    console.log(error);
+    next(error);
+    return;
   }
 });
 
@@ -88,14 +87,16 @@ router.post("/login", isNotAuthenticated, async (req, res, next) => {
     // Use regex to validate the email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!emailRegex.test(email)) {
-      res.status(400).json({ message: "Please check the email address." });
+      const error = SignAndLogErrors("email", email);
+      res.status(406).json(error.message);
       return;
     }
 
     const foundUser = await User.findOne({ email });
 
     if (!foundUser) {
-      res.status(401).json({ error: "Credentials not found" });
+      const error = SignAndLogErrors("notFound", email);
+      res.status(401).json(error.message);
       return;
     }
 
@@ -115,18 +116,25 @@ router.post("/login", isNotAuthenticated, async (req, res, next) => {
       res.status(200).send({ authToken: authToken, message: "login ok" });
       return;
     } else {
-      res.status(401).json({ error: "Credentials not found" });
+      const error = SignAndLogErrors("wrong", email);
+      res.status(401).json(error.message);
+      return;
     }
   } catch (error) {
     next(error);
+    return;
   }
 });
 
 router.get("/verify", isAuthenticated, (req, res, next) => {
-  console.log(req.headers, "HEADERS");
-
-  // console.log(req.payload.email, "jwt");
-  res.status(200).json(req.payload);
+  try {
+    // console.log(req.headers, "HEADERS");
+    // console.log(req.payload.email, "jwt");
+    res.status(200).json(req.payload);
+  } catch (error) {
+    next(error);
+    return;
+  }
 });
 
 module.exports = router;

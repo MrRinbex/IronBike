@@ -14,8 +14,11 @@ router.post("/create", async (req, res, next) => {
       madeIn,
     });
     res.status(201).json(response);
-  } catch (err) {
-    res.json(err);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Internal server error, please try again" });
+    return;
   }
 });
 //  POST /api/brand  -  Find brand
@@ -24,8 +27,11 @@ router.get("/list", async (req, res, next) => {
   try {
     const brand = await Brand.find();
     res.json(brand);
-  } catch (err) {
-    res.json(err);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Internal server error, please try again" });
+    return;
   }
 });
 
@@ -45,8 +51,11 @@ router.put("/update/:brandId", async (req, res, next) => {
     });
 
     res.json(brand);
-  } catch (err) {
-    res.json(err);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Internal server error, please try again" });
+    return;
   }
 });
 
@@ -64,8 +73,11 @@ router.delete("/delete/:brandId", async (req, res, next) => {
     await Brand.findByIdAndRemove(brandId);
 
     res.status(204).send();
-  } catch (err) {
-    res.json(err);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Internal server error, please try again" });
+    return;
   }
 });
 
