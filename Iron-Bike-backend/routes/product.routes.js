@@ -12,6 +12,7 @@ router.get("/", async (req, res, next) => {
   try {
     const query = req.query;
 
+
     
     let queryProducts;
     const queryArray = Object.entries(query).map((e) => ({ [e[0]]: e[1] }));
@@ -26,7 +27,6 @@ router.get("/", async (req, res, next) => {
       // console.log("APPEL 2");
       console.log(queryProducts, "FILTER");
     } else {
-      // console.log("APPEL 3");
       queryProducts = await Product.find();
     }
     res.json(queryProducts);
