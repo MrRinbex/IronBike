@@ -1,39 +1,42 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
-const { Product, Bike, Nutrition, Brand } = require("../models/Product.model");
+const { Product} = require("../models/Product.model");
 
-/**
- * /category-name/product-name GET
- */
 
-//  POST /api/Products  -  Find Products
 
-router.get("/", async (req, res, next) => {
+//GET PRODUCT
+router.get("/:id", async (req, res) => {
   try {
-    const query = req.query;
-
-
-    
-    let queryProducts;
-    const queryArray = Object.entries(query).map((e) => ({ [e[0]]: e[1] }));
-    
-    console.log(queryArray, "QUERY ARRAY");
-
-    if (queryArray.length === 1) {
-      // console.log("Appel 1");
-      queryProducts = await Product.find(queryArray[0]);
-    } else if (queryArray.length > 1) {
-      queryProducts = await Product.find({ $and: queryArray });
-      // console.log("APPEL 2");
-      console.log(queryProducts, "FILTER");
-    } else {
-      queryProducts = await Product.find();
-    }
-    res.json(queryProducts);
+    const product = await Product.findById(req.params.id);
+    res.status(200).json(product);
   } catch (err) {
-    console.log(err, "ERROR");
-    res.json(err);
+    res.status(500).json(err);
   }
 });
+
+//GET ALL PRODUCTS
+router.get("/", async (req, res) => {
+  const qNew = req.query;
+  const qCategory = req.query.category;
+  try {
+    let products;
+    if (qNew) {
+      products = await Product.find(qNew).sort({ createdAt: -1 });
+    } else if (qCategory) {
+      products = await Product.find({
+        categories: {
+          $in: [qCategory],
+        },
+      });
+    } else {
+      products = await Product.find();
+    }
+
+    res.status(200).json(products);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;

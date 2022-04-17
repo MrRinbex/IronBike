@@ -5,23 +5,15 @@ mongoose.plugin(slug);
 
 const productSchema = new Schema(
   {
-    productName: {
-      type: String,
-      required: true,
-    },
+    productName: { type: String, required: true },
+    brand: { type: Schema.Types.ObjectId, ref: "Brand" },
+    image: { type: String, required: true },
+    category: { type: Array },
+    size: { type: Array },
+    color: { type: Array },
+    price: { type: Number, required: true },
+    inStock: { type: Boolean, default: true },
     slug: { type: String, slug: "productName" },
-    brand: {
-      type: Schema.Types.ObjectId,
-      ref: "Brand",
-    },
-    quantity: {
-      type: Number,
-    },
-    image: String,
-    price: {
-      type: Number,
-      required: true,
-    },
   },
   {
     timestamps: true,
@@ -36,18 +28,10 @@ const bikeSchema = new Schema({
     type: String,
     enum: ["Road Bike", "Mountain Bike", "City Bike", "E-Bike", "Low Rider"],
   },
-  size: {
-    type: String,
-    enum: ["S", "M", "L"],
-  },
   frameMaterials: {
     type: String,
     enum: ["aluminum", "carbon", "titanium"],
   },
-  // equipment: {
-  //   type: String,
-  //   enum: ["Shimano", "Campagnolo", "Sram"],
-  // },
   color: {
     type: String,
   },
@@ -84,6 +68,7 @@ const nutritionSchema = new Schema({
   },
   weight: Number,
 });
+
 const Nutrition = Product.discriminator("Nutrition", nutritionSchema);
 
 const clothesSchema = new Schema({
@@ -94,10 +79,6 @@ const clothesSchema = new Schema({
   type: {
     type: String,
     enum: ["Helmets", "Jerseys", "Trousers", "Shoes", "Glasses"],
-  },
-  size: {
-    type: String,
-    enum: ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
   },
   ReflectiveEquipment: {
     type: String,
@@ -111,6 +92,7 @@ const clothesSchema = new Schema({
     type: String,
   },
 });
+
 const Clothes = Product.discriminator("Clothes", clothesSchema);
 
 module.exports = { Product, Bike, Accessory, Nutrition, Clothes };
