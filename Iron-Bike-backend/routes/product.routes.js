@@ -12,6 +12,7 @@ router.get("/", async (req, res, next) => {
   try {
     const query = req.query;
     console.log(query, "QUERY");
+    let queryProducts;
     //
     const queryArray = Object.entries(query).map((e) => ({ [e[0]]: e[1] }));
     //
@@ -24,7 +25,7 @@ router.get("/", async (req, res, next) => {
       console.log("APPEL 2");
       queryProducts = await Product.find({ $and: queryArray });
       console.log(queryProducts, "FILTER");
-    } else if (!queryArray) {
+    } else {
       console.log("APPEL 3");
       queryProducts = await Product.find();
     }
