@@ -21,6 +21,9 @@ app.use(express.json());
 const allRoutes = require("./routes/index.routes");
 app.use("/api", allRoutes);
 
+const adminRoutes = require("./routes/admin.routes");
+app.use("/api/admin", adminRoutes);
+
 const userRoutes = require("./routes/user.routes");
 app.use("/api/users", userRoutes);
 
