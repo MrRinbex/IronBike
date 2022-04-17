@@ -33,7 +33,6 @@ router.get("/", async (req, res, next) => {
 });
 
 // G E T _ O N E _ P R O D U C T /
-// extract info from req.query / req.params / req.body !
 
 router.get("/:id", async (req, res, next) => {
   try {
