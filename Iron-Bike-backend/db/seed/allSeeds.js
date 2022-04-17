@@ -8,7 +8,7 @@ const { Product, Bike, Nutrition } = require("../../models/Product.model");
 const { faker } = require("@faker-js/faker");
 
 mongoose
-  .connect(MONGO_LOCAL_URI) // DATABASE, LOCAL OU ONLINE ?
+  .connect(MONGO_URI) // DATABASE, LOCAL OU ONLINE ?
   .then(async (x) => {
     console.log(
       `Connected to Mongo IronBike! Database name: '${x.connections[0].name}'`
