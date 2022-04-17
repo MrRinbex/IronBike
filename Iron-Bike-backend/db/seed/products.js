@@ -24,7 +24,7 @@ const bikes = [
     modelYears: 2022,
   },
   {
-    productName: "Pinnarelo",
+    productName: "FOCUS Jam",
     quantity: 3,
     price: 8325,
     categoryBike: "Mountain Bike",
@@ -33,7 +33,7 @@ const bikes = [
     equipment: "Campagnolo",
     color: "white",
     weight: 11,
-    image:"https://res.cloudinary.com/ironbike/image/upload/v1649846501/Products/Bike/Road%20Bike/Wilier_0_SL_Disc_Chorus_2x12_grau_blau_600x600_vrnca6.jpg",
+    image:"https://res.cloudinary.com/ironbike/image/upload/v1649969273/Products/Bike/MTB/FOCUS_Jam_6_8_wei__grau_600x600_kclqtz.jpg",
     modelYears: 2020,
   },
 ];
@@ -71,6 +71,7 @@ const createProducts = async (req, res, next) => {
   bikes[0].brand = willierBrand._id;
 
   await Bike.create(bikes);
+
 
   const isostarBrand = await Brand.findOne({ name: "Isostar" });
   nutritions[0].brand = isostarBrand._id;

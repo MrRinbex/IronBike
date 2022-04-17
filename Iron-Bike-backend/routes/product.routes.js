@@ -11,24 +11,24 @@ const { Product, Bike, Nutrition, Brand } = require("../models/Product.model");
 router.get("/", async (req, res, next) => {
   try {
     const query = req.query;
-    console.log(query, "QUERY");
-    //
+
+    
+    let queryProducts;
     const queryArray = Object.entries(query).map((e) => ({ [e[0]]: e[1] }));
-    //
+    
     console.log(queryArray, "QUERY ARRAY");
 
     if (queryArray.length === 1) {
-      console.log("Appel 1");
+      // console.log("Appel 1");
       queryProducts = await Product.find(queryArray[0]);
     } else if (queryArray.length > 1) {
-      console.log("APPEL 2");
       queryProducts = await Product.find({ $and: queryArray });
+      // console.log("APPEL 2");
       console.log(queryProducts, "FILTER");
-    } else if (!queryArray) {
-      console.log("APPEL 3");
+    } else {
+      // console.log("APPEL 3");
       queryProducts = await Product.find();
     }
-    console.log(`${queryProducts.length} produits trouvés.`);
     res.json(queryProducts);
   } catch (err) {
     console.log(err, "ERROR");
