@@ -30,7 +30,7 @@ const bikeSchema = new Schema({
   },
   frameMaterials: {
     type: String,
-    enum: ["aluminum", "carbon", "titanium"],
+    enum: ["Aluminum", "Carbon", "Titanium"],
   },
   color: {
     type: String,
