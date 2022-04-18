@@ -8,7 +8,7 @@ router.get("/", async (req, res, next) => {
 
     return;
   } catch (err) {
-    console.log(err, "erreur");
+    console.log(err, "error");
     next(err);
   }
 });

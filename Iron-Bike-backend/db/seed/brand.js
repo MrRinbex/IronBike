@@ -35,7 +35,14 @@ const brands = [
     madeIn: "France",
     foundationYear: 1977,
   },
-
+  {
+    name: "Focus",
+    brandLogo:
+      "https://res.cloudinary.com/ironbike/image/upload/v1650272325/Products/Brand/Focus_Bikes_Logo_cjq99g.png",
+    headquarters: "Germany",
+    madeIn: "Germany",
+    foundationYear: 1992,
+  },
 ];
 
 const createBrands = async (req, res, next) => {

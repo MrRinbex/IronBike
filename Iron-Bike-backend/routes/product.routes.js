@@ -5,23 +5,21 @@ const { Product } = require("../models/Product.model");
 // GET PRODUCT By id or slug !
 router.get("/:idOrSlug", async (req, res) => {
   const query = req.params.idOrSlug;
-
   try {
-    const product = await Product.find({
-      $or: [{ _id: query }, { slug: query }],
-    });
-    res.status(200).json(product);
-  } catch (e) {
-    if (e.kind === "ObjectId") {
-      const product = await Product.find({ slug: query });
-      res.status(200).json(product);
+    if (mongoose.isValidObjectId(query)) {
+      const product = await Product.findById(query);
+      res.json(product);
     } else {
-      res.status(500).json(e);
+      const product = await Product.findOne({ slug: query });
+      res.status(200).json(product);
     }
+  } catch (e) {
+    res.status(500).json(e);
   }
 });
 
 // GET ALL PRODUCTS, or by categeory or by query !
+
 router.get("/", async (req, res) => {
   const query = req.query;
   try {
