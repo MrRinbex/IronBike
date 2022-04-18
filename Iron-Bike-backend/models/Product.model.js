@@ -30,7 +30,7 @@ const bikeSchema = new Schema({
   },
   frameMaterials: {
     type: String,
-    enum: ["aluminum", "carbon", "titanium"],
+    enum: ["Aluminum", "Carbon", "Titanium"],
   },
   color: {
     type: String,
@@ -53,7 +53,7 @@ const Accessory = Product.discriminator("Accessory", accessorySchema);
 const nutritionSchema = new Schema({
   aspect: {
     type: String,
-    enum: ["Bars", "Gels", "Drinks", "Energy Meals", "Food Supplements"],
+    enum: ["Bars", "Gels", "Drinks", "Energy Meals"],
   },
   flavor: {
     type: String,

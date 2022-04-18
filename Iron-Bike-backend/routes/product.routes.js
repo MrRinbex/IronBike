@@ -7,9 +7,16 @@ router.get("/:idOrSlug", async (req, res) => {
   const query = req.params.idOrSlug;
   try {
     if (mongoose.isValidObjectId(query)) {
+      console.log("try by id")
       const product = await Product.findById(query);
+      if(product === null){
+        const product = await Product.findOne({ slug: query });
+        res.status(200).json(product);
+        return
+      }
       res.json(product);
     } else {
+      console.log("try by slug")
       const product = await Product.findOne({ slug: query });
       res.status(200).json(product);
     }
@@ -18,7 +25,7 @@ router.get("/:idOrSlug", async (req, res) => {
   }
 });
 
-// GET ALL PRODUCTS, or by categeory or by query !
+// GET ALL PRODUCTS, or by category or by query !
 
 router.get("/", async (req, res) => {
   const query = req.query;
@@ -31,7 +38,6 @@ router.get("/", async (req, res) => {
     } else {
       products = await Product.find().sort({ createdAt: -1 });
     }
-
     res.status(200).json(products);
   } catch (err) {
     res.status(500).json(err);
