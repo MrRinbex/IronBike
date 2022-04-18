@@ -76,7 +76,7 @@ const brands = [
     foundationYear: 1975,
   },
   {
-    name: "SIDI",
+    name: "Sidi",
     brandLogo:
       "https://res.cloudinary.com/ironbike/image/upload/v1650276673/Products/Brand/logo_2_cyycpl.png",
     headquarters: "Italy",
@@ -84,12 +84,12 @@ const brands = [
     foundationYear: 1960,
   },
   {
-    name: "Specialized",
+    name: "Polar",
     brandLogo:
-      "https://res.cloudinary.com/ironbike/image/upload/v1650276823/Products/Brand/Specialized_red_S_black_logotype_f8ankj.png",
-    headquarters: "USA",
-    madeIn: "USA",
-    foundationYear: 1974,
+      "https://res.cloudinary.com/ironbike/image/upload/v1650317903/Products/Brand/Polar_Electro_Logo.svg_cvmecd.png",
+    headquarters: "Finland",
+    madeIn: "Finland",
+    foundationYear: 1977,
   },
   {
     name: "Poc",

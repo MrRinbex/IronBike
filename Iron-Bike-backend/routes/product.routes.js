@@ -25,7 +25,7 @@ router.get("/:idOrSlug", async (req, res) => {
   }
 });
 
-// GET ALL PRODUCTS, or by categeory or by query !
+// GET ALL PRODUCTS, or by category or by query !
 
 router.get("/", async (req, res) => {
   const query = req.query;
@@ -38,7 +38,6 @@ router.get("/", async (req, res) => {
     } else {
       products = await Product.find().sort({ createdAt: -1 });
     }
-
     res.status(200).json(products);
   } catch (err) {
     res.status(500).json(err);

@@ -302,7 +302,7 @@ const nutritions = [
     flavor: "Lemon",
     toTake: "During Training",
     vegan: "Yes",
-    weight: 0.5,
+    weight: 0.9,
     image: "https://res.cloudinary.com/ironbike/image/upload/v1649846405/Products/Nutrition/Drinks/ISOSTAR_HYDRATE_PERFORM_Energy_Drink_560_g_ql3svh.jpg",
     brand: "Isostar",
   },
@@ -316,10 +316,492 @@ const nutritions = [
     toTake: "During Training",
     vegan: "Yes",
     weight: 0.06,
-    image: "https://res.cloudinary.com/ironbike/image/upload/v1649846405/Products/Nutrition/Drinks/ISOSTAR_HYDRATE_PERFORM_Energy_Drink_560_g_ql3svh.jpg",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1649846404/Products/Nutrition/Drinks/ISOSTAR_ENERGY_SHOT_Energy_Drink_60_ml_srtxvl.jpg",
+    brand: "Isostar",
+  },
+  {
+    productName: "Stc Premium Whey Protein",
+    quantity: 100,
+    price: 32,
+    category:"Nutrition",
+    aspect: "Energy Meals",
+    flavor: "Chocolate",
+    toTake: "After Training",
+    vegan: "Yes",
+    weight: 1.8,
+    image:"https://res.cloudinary.com/ironbike/image/upload/v1649846404/Products/Nutrition/Drinks/STC_NUTRITION_PREMIUM_WHEY_Recovery_Drink_Chocolat_750g_k4y2s1.jpg",
+    brand: "STC Nutrition",
+  },
+  {
+    productName: "Isostar Energy Booster Pack",
+    quantity: 300,
+    price: 11.2,
+    category:"Nutrition",
+    aspect: "Gels",
+    flavor: "Citrus",
+    toTake: "During Training",
+    vegan: "None",
+    weight: 0.46,
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650310384/Products/Nutrition/Gels/600x600-149416_15869577608897_q2c5hc.jpg",
+    brand: "Isostar",
+  },
+  {
+    productName: "Isostar Bcaa Booster Pack",
+    quantity: 300,
+    price: 12.2,
+    category:"Nutrition",
+    aspect: "Gels",
+    flavor: "Red Fruits",
+    toTake: "During Training",
+    vegan: "None",
+    weight: 0.46,
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650311013/Products/Nutrition/Gels/600x600-149419_15223958399081_wxozfe.jpg",
+    brand: "Isostar",
+  },
+  {
+    productName: "Isostar Energy Gel Cherry",
+    quantity: 300,
+    price: 2.5,
+    category:"Nutrition",
+    aspect: "Gels",
+    flavor: "Cherry",
+    toTake: "During Training",
+    vegan: "None",
+    weight: 0.35,
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650311276/Products/Nutrition/Gels/600x600-149403_15228292510149_oxufxu.jpg",
+    brand: "Isostar",
+  },
+  {
+    productName: "Isostar Energy Gel Lemon",
+    quantity: 300,
+    price: 2.5,
+    category:"Nutrition",
+    aspect: "Gels",
+    flavor: "Lemon",
+    toTake: "During Training",
+    vegan: "None",
+    weight: 0.35,
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650311276/Products/Nutrition/Gels/600x600-149403_15228292444723_zzztdp.jpg",
     brand: "Isostar",
   },
 ];
+
+const clothes = [
+  {
+    productName: "Santini UCI WORLD",
+    quantity: 300,
+    size: "M",
+    price: 72.5,
+    category:"Clothes",
+    type:"Jerseys",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650312191/Products/Clothes/600x600-239721_1612531479724_ist3cn.jpg",
+    ReflectiveEquipment: "None",
+    rainProtection: "None", 
+    color: "White", 
+    brand: "Santini", 
+  },
+  {
+    productName: "Santini Pro Alba Tights",
+    quantity: 300,
+    size: "M",
+    price: 49,
+    category:"Clothes",
+    type:"Trousers",
+    sexCategory: "Women",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650313657/Products/Clothes/600x600-201173_15979357976771_ymqxjz.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "None", 
+    color: "Black", 
+    brand: "Santini", 
+  },
+  {
+    productName: "Santini Trek Segafredo Shorts",
+    quantity: 300,
+    size: "M",
+    price: 99.99,
+    category:"Clothes",
+    type:"Trousers",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650314017/Products/Clothes/600x600-291889_16454382596949_w34tsq.jpg",
+    ReflectiveEquipment: "None",
+    rainProtection: "None", 
+    color: "Blue, Red", 
+    brand: "Santini", 
+  },
+  {
+    productName: "Santini La Fleche Wallone Shorts",
+    quantity: 300,
+    size: "M",
+    price: 99.99,
+    category:"Clothes",
+    type:"Trousers",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650314017/Products/Clothes/600x600-294465_16454378446991_bongcf.jpg",
+    ReflectiveEquipment: "None",
+    rainProtection: "None", 
+    color: "Black, Yellow", 
+    brand: "Santini", 
+  },
+  {
+    productName: "Santini Shorts",
+    quantity: 300,
+    size: "M",
+    price: 69.99,
+    category:"Clothes",
+    type:"Trousers",
+    sexCategory: "Women",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1649969624/Products/Clothes/600x600-294413_16460467100265_b6akq3.jpg",
+    ReflectiveEquipment: "None",
+    rainProtection: "None", 
+    color: "Blue", 
+    brand: "Santini", 
+  },
+  {
+    productName: "Santini TDF Jersey",
+    quantity: 300,
+    size: "M",
+    price: 89.99,
+    category:"Clothes",
+    type:"Jerseys",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650314482/Products/Clothes/600x600-285901_16391426018104_zotvdc.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "None", 
+    color: "Blue", 
+    brand: "Santini", 
+  },
+  {
+    productName: "Santini Trek Segafredo ITA Jersey",
+    quantity: 300,
+    size: "M",
+    price: 109.99,
+    category:"Clothes",
+    type:"Jerseys",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650314482/Products/Clothes/600x600-291887_16454396418094_glhwzs.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "None", 
+    color: "White, Green, Red", 
+    brand: "Santini", 
+  },
+  {
+    productName: "Santini Paris Roubaix Jersey",
+    quantity: 300,
+    size: "M",
+    price: 69.99,
+    category:"Clothes",
+    type:"Jerseys",
+    sexCategory: "Women",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650314482/Products/Clothes/600x600-294503_16479680630056_cv0yhp.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "None", 
+    color: "Black", 
+    brand: "Santini", 
+  },
+  {
+    productName: "Oakley Icon shorts",
+    quantity: 300,
+    size: "M",
+    price: 79.99,
+    category:"Clothes",
+    type:"Jerseys",
+    sexCategory: "Women",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650315705/Products/Clothes/600x600-183853_15849560038724_xsbxto.jpg",
+    ReflectiveEquipment: "None",
+    rainProtection: "None", 
+    color: "Black", 
+    brand: "Oakley", 
+  },
+  {
+    productName: "Oakley Font Goggles Pink",
+    quantity: 300,
+    size: "M",
+    price: 109.99,
+    category:"Clothes",
+    type:"Glasses",
+    sexCategory: "Women",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650315240/Products/Clothes/600x600-236621_16130418436609_vlrlxb.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "None", 
+    color: "Pink", 
+    brand: "Oakley", 
+  },
+  {
+    productName: "Oakley Airbrake Goggles Orange",
+    quantity: 300,
+    size: "M",
+    price: 129.99,
+    category:"Clothes",
+    type:"Glasses",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650315240/Products/Clothes/600x600-258937_16318814693122_um2s3c.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "None", 
+    color: "Orange", 
+    brand: "Oakley", 
+  },
+  {
+    productName: "Oakley Airbrake Goggles Green",
+    quantity: 300,
+    size: "M",
+    price: 129.99,
+    category:"Clothes",
+    type:"Glasses",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650315068/Products/Clothes/600x600-258935_16318813623192_rnpuhv.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "None", 
+    color: "Green", 
+    brand: "Oakley", 
+  },
+  {
+    productName: "Oakley Airbrake Goggles Yellow",
+    quantity: 300,
+    size: "M",
+    price: 129.99,
+    category:"Clothes",
+    type:"Glasses",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650315240/Products/Clothes/600x600-258941_16318813124677_avovyw.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "None", 
+    color: "Yellow", 
+    brand: "Oakley", 
+  },
+  {
+    productName: "Oakley Encoder Purple",
+    quantity: 300,
+    size: "M",
+    price: 199.99,
+    category:"Clothes",
+    type:"Glasses",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650315925/Products/Clothes/600x600-236507_16399936495675_p09hqb.jpg",
+    ReflectiveEquipment: "None",
+    rainProtection: "None", 
+    color: "Purple", 
+    brand: "Oakley", 
+  },
+  {
+    productName: "Oakley Radar Grey",
+    quantity: 300,
+    size: "M",
+    price: 129.99,
+    category:"Clothes",
+    type:"Glasses",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650315925/Products/Clothes/600x600-236563_16176927288849_p39sd4.jpg",
+    ReflectiveEquipment: "None",
+    rainProtection: "None", 
+    color: "Grey", 
+    brand: "Oakley", 
+  },
+  {
+    productName: "Giro Cinder",
+    quantity: 300,
+    size: "M",
+    price: 119.99,
+    category:"Clothes",
+    type:"Helmets",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1649969624/Products/Clothes/600x600-130588_1481273347575_wqlgrr.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "None", 
+    color: "Grey", 
+    brand: "Giro", 
+  },
+  {
+    productName: "Giro Agilis",
+    quantity: 300,
+    size: "M",
+    price: 79.99,
+    category:"Clothes",
+    type:"Helmets",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1649969624/Products/Clothes/600x600-175789_15741606359316_jeu3qk.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "None", 
+    color: "Grey", 
+    brand: "Giro", 
+  },
+  {
+    productName: "Poc Tectal",
+    quantity: 300,
+    size: "M",
+    price: 239.99,
+    category:"Clothes",
+    type:"Helmets",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1649969624/Products/Clothes/600x600-261865_16303296605945_sjqbgy.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "None", 
+    color: "Black", 
+    brand: "Poc", 
+  },
+  {
+    productName: "Poc Omne",
+    quantity: 300,
+    size: "M",
+    price: 156.99,
+    category:"Clothes",
+    type:"Helmets",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1649969624/Products/Clothes/600x600-284585_16449285794106_stf6pq.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "None", 
+    color: "White, Orange", 
+    brand: "Poc", 
+  },
+  {
+    productName: "Sidi Sixty Red",
+    quantity: 300,
+    size: "M",
+    price: 299.99,
+    category:"Clothes",
+    type:"Shoes",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650316958/Products/Clothes/600x600-216699_16122191944224_dfabfx.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "Yes", 
+    color: "Red", 
+    brand: "Sidi", 
+  },
+  {
+    productName: "Sidi Sixty Grey",
+    quantity: 300,
+    size: "M",
+    price: 299.99,
+    category:"Clothes",
+    type:"Shoes",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650316958/Products/Clothes/600x600-221817_16219497662233_ycmot8.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "Yes", 
+    color: "Grey", 
+    brand: "Sidi", 
+  },
+  {
+    productName: "Sidi Shot 2 White",
+    quantity: 300,
+    size: "M",
+    price: 339.99,
+    category:"Clothes",
+    type:"Shoes",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650316958/Products/Clothes/600x600-216569_1622801544638_nhmhjj.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "Yes", 
+    color: "White", 
+    brand: "Sidi", 
+  },
+  {
+    productName: "Sidi Genius Blue",
+    quantity: 300,
+    size: "M",
+    price: 239.99,
+    category:"Clothes",
+    type:"Shoes",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650316958/Products/Clothes/600x600-271877_16462983591085_fgo7y9.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "Yes", 
+    color: "Blue", 
+    brand: "Sidi", 
+  },
+  {
+    productName: "Sidi Shot 2 Blue",
+    quantity: 300,
+    size: "M",
+    price: 339.99,
+    category:"Clothes",
+    type:"Shoes",
+    sexCategory: "Men",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650316958/Products/Clothes/600x600-271875_16464096952094_pti3lm.jpg",
+    ReflectiveEquipment: "Yes",
+    rainProtection: "Yes", 
+    color: "Blue", 
+    brand: "Sidi", 
+  },
+]
+
+
+const accessories = [
+  {
+    productName: "Polar H9",
+    quantity: 300,
+    price: 69.99,
+    category:"Accessory",
+    features: "Heart Rate Monitor",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650318072/Products/accessory/600x600-191569_16043123153328_ozo4an.jpg",
+    color: "Black", 
+    size: "S",
+    brand: "Polar", 
+  },
+  {
+    productName: "Polar Speed Kit",
+    quantity: 300,
+    price: 63.99,
+    category:"Accessory",
+    features: "Bluetooth",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650318423/Products/accessory/600x600-98649-kit-vitesse-et-cadence-polar-bluetooth_cn3nq5.jpg",
+    color: "Black", 
+    size: "S",
+    brand: "Polar", 
+  },
+  {
+    productName: "Polar Vantage Kit",
+    quantity: 300,
+    price: 549.99,
+    category:"Accessory",
+    features: "GPS",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650318423/Products/accessory/600x600-212629_16043084968826_rkxbue.jpg",
+    color: "Grey", 
+    size: "S",
+    brand: "Polar", 
+  },
+  {
+    productName: "Polar M430",
+    quantity: 300,
+    price: 229.99,
+    category:"Accessory",
+    features: "GPS",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650318423/Products/accessory/600x600-137604_14979450545454_qvfits.jpg",
+    color: "Black", 
+    size: "S",
+    brand: "Polar", 
+  },
+  {
+    productName: "Garmin Edge 830",
+    quantity: 300,
+    price: 289.99,
+    category:"Accessory",
+    features: "GPS",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1649969328/Products/accessory/600x600-166208_15578245996799_eekevj.jpg",
+    color: "Black", 
+    brand: "Garmin", 
+  },
+  {
+    productName: "Garmin Edge 1030",
+    quantity: 300,
+    price: 439.99,
+    category:"Accessory",
+    features: "GPS",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650318853/Products/accessory/600x600-199089_15935889527235_qyjgoi.jpg",
+    color: "Black", 
+    brand: "Garmin", 
+  },
+  {
+    productName: "Garmin Fenix S7",
+    quantity: 300,
+    price: 939.99,
+    category:"Accessory",
+    features: "Wireless",
+    image: "https://res.cloudinary.com/ironbike/image/upload/v1650318999/Products/accessory/600x600-294149_16461474789231_ujxy5k.jpg",
+    color: "Black", 
+    brand: "Garmin", 
+  },
+]
 
 
 
@@ -328,6 +810,8 @@ const getBrandId = async (brandName) => {
     .findOne({ 'name': brandName  })
   return brand?._id;
 }
+
+// seed Bikes
 
 const seedBike = async (bike) => {
   try {
@@ -346,6 +830,8 @@ const seedBike = async (bike) => {
   }
 }
 
+// seed Nutrition
+
 const seedNutrition = async (nutrition) => {
   try {
     const brandId = await getBrandId(nutrition.brand);
@@ -363,6 +849,47 @@ const seedNutrition = async (nutrition) => {
   }
 }
 
+// seed Clothes
+
+const seedClothes = async (clothe) => {
+  try {
+    const brandId = await getBrandId(clothe.brand);
+    if (brandId) {
+      const createdProduct = await Clothes.create({...clothe,
+        brand: brandId,
+      })
+      console.log(createdProduct)
+      console.log(`${clothe.brand} clothe is: `, createdProduct)
+    } else {
+      console.log(`No brand for ${clothe.brand}...`)
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// seed Accessory
+
+const seedAccessory = async (accessory) => {
+  try {
+    const brandId = await getBrandId(accessory.brand);
+    if (brandId) {
+      const createdProduct = await Accessory.create({...accessory,
+        brand: brandId,
+      })
+      console.log(createdProduct)
+      console.log(`${accessory.brand} accessory is: `, createdProduct)
+    } else {
+      console.log(`No brand for ${accessory.brand}...`)
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+
+
 
 
 
@@ -376,6 +903,8 @@ const perform = async () => {
   await Product.deleteMany();
   await Promise.all(bikes.map((product) => seedBike(product)))
   await Promise.all(nutritions.map((product) => seedNutrition(product)))
+  await Promise.all(clothes.map((product) => seedClothes(product)))
+  await Promise.all(accessories.map((product) => seedAccessory(product)))
   await mongoose.connection.close();
 };
 perform();
