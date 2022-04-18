@@ -12,7 +12,7 @@ router.get("/:idOrSlug", async (req, res) => {
     });
     res.status(200).json(product);
   } catch (e) {
-    if (e.kind === "ObjectI") {
+    if (e.kind === "ObjectId") {
       const product = await Product.find({ slug: query });
       res.status(200).json(product);
     } else {
