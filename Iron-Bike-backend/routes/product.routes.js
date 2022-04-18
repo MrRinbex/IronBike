@@ -1,35 +1,37 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
-const { Product} = require("../models/Product.model");
+const { Product } = require("../models/Product.model");
 
+// GET PRODUCT By id or slug !
+router.get("/:idOrSlug", async (req, res) => {
+  const query = req.params.idOrSlug;
 
-
-//GET PRODUCT
-router.get("/:id", async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.find({
+      $or: [{ _id: query }, { slug: query }],
+    });
     res.status(200).json(product);
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (e) {
+    if (e.kind === "ObjectI") {
+      const product = await Product.find({ slug: query });
+      res.status(200).json(product);
+    } else {
+      res.status(500).json(e);
+    }
   }
 });
 
-//GET ALL PRODUCTS
+// GET ALL PRODUCTS, or by categeory or by query !
 router.get("/", async (req, res) => {
-  const qNew = req.query;
-  const qCategory = req.query.category;
+  const query = req.query;
   try {
     let products;
-    if (qNew) {
-      products = await Product.find(qNew).sort({ createdAt: -1 });
-    } else if (qCategory) {
-      products = await Product.find({
-        categories: {
-          $in: [qCategory],
-        },
-      });
+    if (query.category) {
+      products = await Product.find({ category: query.category });
+    } else if (Object.keys(query).length > 0) {
+      products = await Product.find(query).sort({ createdAt: -1 });
     } else {
-      products = await Product.find();
+      products = await Product.find().sort({ createdAt: -1 });
     }
 
     res.status(200).json(products);
@@ -37,6 +39,5 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 module.exports = router;
