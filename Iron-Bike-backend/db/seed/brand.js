@@ -6,7 +6,7 @@ const brands = [
   {
     name: "Kona",
     brandLogo:
-      "https://res.cloudinary.com/ironbike/image/upload/v1650292675/Products/Brand/png-clipart-kona-bicycle-company-bicycle-shop-mountain-bike-cycling-bicycle-text-logo_rlrisj.png",
+      "https://res.cloudinary.com/ironbike/image/upload/v1650383903/Products/Brand/kona-logo-png-3_apfwlk.png",
     headquarters: "USA",
     madeIn: "USA",
     foundationYear: 1988,
@@ -94,7 +94,7 @@ const brands = [
   {
     name: "Poc",
     brandLogo:
-      "https://res.cloudinary.com/ironbike/image/upload/v1650277154/Products/Brand/194-1941566_jobs-sri-opportunities-png-abeoncliparts-graduation-poc-logo_cfouix.jpg",
+      "https://res.cloudinary.com/ironbike/image/upload/v1650383903/Products/Brand/poc-logo-02_jqlqpd.jpg",
     headquarters: "Sweden",
     madeIn: "Sweden",
     foundationYear: 2004,
@@ -158,7 +158,7 @@ const brands = [
   {
     name: "PowerBar",
     brandLogo:
-      "https://res.cloudinary.com/ironbike/image/upload/v1650296565/Products/Brand/kisspng-powerbar-dietary-supplement-energy-bar-business-nu-sliding-bar-5b246641508c23.7268255515291121293299_eoosvj.jpg",
+      "https://res.cloudinary.com/ironbike/image/upload/v1650383903/Products/Brand/powerbar-social_tdwawv.jpg",
     headquarters: "USA",
     madeIn: "USA",
     foundationYear: 1986,

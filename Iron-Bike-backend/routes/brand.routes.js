@@ -23,7 +23,7 @@ router.post("/create", async (req, res, next) => {
 });
 //  POST /api/brand  -  Find brand
 
-router.get("/list", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const brand = await Brand.find();
     res.json(brand);
@@ -32,6 +32,29 @@ router.get("/list", async (req, res, next) => {
       .status(500)
       .json({ message: "Internal server error, please try again" });
     return;
+  }
+});
+//  GET /api/brand  -  Slug or Id brand
+
+router.get("/:idOrSlug", async (req, res) => {
+  const query = req.params.idOrSlug;
+  try {
+    if (mongoose.isValidObjectId(query)) {
+      console.log("try by id")
+      const brand = await Brand.findById(query);
+      if(brand === null){
+        const brand = await Brand.findOne({ slug: query });
+        res.status(200).json(brand);
+        return
+      }
+      res.json(brand);
+    } else {
+      console.log("try by slug")
+      const brand = await Brand.findOne({ slug: query });
+      res.status(200).json(brand);
+    }
+  } catch (e) {
+    res.status(500).json(e);
   }
 });
 
