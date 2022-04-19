@@ -34,6 +34,12 @@ router.get("/", async (req, res) => {
     let products;
     if (query.category) {
       products = await Product.find({ category: query.category });
+    } else if (query.size) {
+      products = await Product.find({ size: query.size });
+    } else if (query.productName) {
+      products = await Product.find({ productName: query.productName });
+    } else if (query.color) {
+      products = await Product.find({ color: query.color });
     } else if (Object.keys(query).length > 0) {
       products = await Product.find(query).populate("brand").sort({ createdAt: -1 });
     } else {
