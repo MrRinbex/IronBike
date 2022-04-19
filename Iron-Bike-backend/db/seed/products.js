@@ -779,6 +779,7 @@ const accessories = [
     features: "GPS",
     image: "https://res.cloudinary.com/ironbike/image/upload/v1649969328/Products/accessory/600x600-166208_15578245996799_eekevj.jpg",
     color: "Black", 
+    size: "S",
     brand: "Garmin", 
   },
   {
@@ -789,6 +790,7 @@ const accessories = [
     features: "GPS",
     image: "https://res.cloudinary.com/ironbike/image/upload/v1650318853/Products/accessory/600x600-199089_15935889527235_qyjgoi.jpg",
     color: "Black", 
+    size: "S",
     brand: "Garmin", 
   },
   {
@@ -799,6 +801,7 @@ const accessories = [
     features: "Wireless",
     image: "https://res.cloudinary.com/ironbike/image/upload/v1650318999/Products/accessory/600x600-294149_16461474789231_ujxy5k.jpg",
     color: "Black", 
+    size: "S",
     brand: "Garmin", 
   },
 ]
@@ -886,16 +889,6 @@ const seedAccessory = async (accessory) => {
     console.log(error)
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 const perform = async () => {
