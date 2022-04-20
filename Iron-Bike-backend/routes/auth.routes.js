@@ -8,7 +8,12 @@ const {
 const User = require('../models/User.model');
 const { SignAndLogErrors } = require('../error-handling/SignAndLogErrors');
 //
-router.post('/signup', isNotAuthenticated, async (req, res, next) => {
+router.get('signUp', isNotAuthenticated, async (req, res, next) => {
+  console.log('access to sign up route');
+  res.status(200).json({ message: 'access to sign up route' });
+});
+//
+router.post('/signup', isAuthenticated, async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
 
@@ -96,6 +101,7 @@ router.post('/login', async (req, res, next) => {
 
     if (!foundUser) {
       const error = SignAndLogErrors('notFound', email);
+      console.log(error, 'USER NOT FOUND');
       res.status(401).json(error.message);
       return;
     }
