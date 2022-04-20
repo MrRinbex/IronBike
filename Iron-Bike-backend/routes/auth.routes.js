@@ -1,20 +1,25 @@
-const router = require("express").Router();
-const bcrypt = require("bcryptjs");
-const jsonwebtoken = require("jsonwebtoken");
+const router = require('express').Router();
+const bcrypt = require('bcryptjs');
+const jsonwebtoken = require('jsonwebtoken');
 const {
   isAuthenticated,
   isNotAuthenticated,
-} = require("../middleware/jwt.middleware");
-const User = require("../models/User.model");
-const { SignAndLogErrors } = require("../error-handling/SignAndLogErrors");
+} = require('../middleware/jwt.middleware');
+const User = require('../models/User.model');
+const { SignAndLogErrors } = require('../error-handling/SignAndLogErrors');
 //
-router.post("/signup", isNotAuthenticated, async (req, res, next) => {
+router.get('signUp', isNotAuthenticated, async (req, res, next) => {
+  console.log('access to sign up route');
+  res.status(200).json({ message: 'access to sign up route' });
+});
+//
+router.post('/signup', isAuthenticated, async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
 
     // Check if email or password or name are provided as empty string
-    if (email === "" || username === "" || password === "") {
-      const error = SignAndLogErrors("none", email, username);
+    if (email === '' || username === '' || password === '') {
+      const error = SignAndLogErrors('none', email, username);
       res.status(406).json(error);
 
       return;
@@ -22,25 +27,25 @@ router.post("/signup", isNotAuthenticated, async (req, res, next) => {
 
     // Check if email or password or username contains whitespace \s
     if (
-      email.includes(" ") ||
-      password.includes(" ") ||
-      username.includes(" ")
+      email.includes(' ') ||
+      password.includes(' ') ||
+      username.includes(' ')
     ) {
-      const error = SignAndLogErrors("whiteSpace", username, email);
+      const error = SignAndLogErrors('whiteSpace', username, email);
       res.status(406).json(error);
       return;
     }
     // Use regex to validate the email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!emailRegex.test(email)) {
-      const error = SignAndLogErrors("email", email, username);
+      const error = SignAndLogErrors('email', email, username);
       res.status(406).json(error.message);
       return;
     }
 
     const passwordRegex = /.{6,}/;
     if (!passwordRegex.test(password)) {
-      const error = SignAndLogErrors("password");
+      const error = SignAndLogErrors('password');
       res.status(406).json(error.message);
       return;
     }
@@ -48,7 +53,7 @@ router.post("/signup", isNotAuthenticated, async (req, res, next) => {
     const foundUser = await User.findOne({ email });
 
     if (foundUser) {
-      const error = SignAndLogErrors("exist", "", email);
+      const error = SignAndLogErrors('exist', '', email);
       res.status(406).json(error.message);
       return;
     }
@@ -63,7 +68,7 @@ router.post("/signup", isNotAuthenticated, async (req, res, next) => {
       password: hashedPassword,
     });
 
-    console.log(createdUser, "new user");
+    console.log(createdUser, 'new user');
 
     // Send user object without password
     const user = {
@@ -80,14 +85,14 @@ router.post("/signup", isNotAuthenticated, async (req, res, next) => {
   }
 });
 
-router.post("/login", isNotAuthenticated, async (req, res, next) => {
+router.post('/login', async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
     // Use regex to validate the email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!emailRegex.test(email)) {
-      const error = SignAndLogErrors("email", email);
+      const error = SignAndLogErrors('email', email);
       res.status(406).json(error.message);
       return;
     }
@@ -95,7 +100,8 @@ router.post("/login", isNotAuthenticated, async (req, res, next) => {
     const foundUser = await User.findOne({ email });
 
     if (!foundUser) {
-      const error = SignAndLogErrors("notFound", email);
+      const error = SignAndLogErrors('notFound', email);
+      console.log(error, 'USER NOT FOUND');
       res.status(401).json(error.message);
       return;
     }
@@ -103,20 +109,23 @@ router.post("/login", isNotAuthenticated, async (req, res, next) => {
     if (bcrypt.compareSync(password, foundUser.password)) {
       const payload = {
         id: foundUser._id,
-        email,
+        email: foundUser.email,
         username: foundUser.username,
         isAdmin: foundUser.isAdmin,
       };
 
       const authToken = jsonwebtoken.sign(payload, process.env.TOKEN_SECRET, {
-        algorithm: "HS256",
-        expiresIn: "1h",
+        algorithm: 'HS256',
+        expiresIn: '1h',
       });
 
-      res.status(200).send({ authToken: authToken, message: "login ok" });
+      res.status(200).send({
+        authToken: authToken,
+        message: 'login ok du back end',
+      });
       return;
     } else {
-      const error = SignAndLogErrors("wrong", email);
+      const error = SignAndLogErrors('wrong', email);
       res.status(401).json(error.message);
       return;
     }
@@ -126,12 +135,13 @@ router.post("/login", isNotAuthenticated, async (req, res, next) => {
   }
 });
 
-router.get("/verify", isAuthenticated, (req, res, next) => {
+router.get('/verify', isAuthenticated, (req, res, next) => {
   try {
-    // console.log(req.headers, "HEADERS");
-    // console.log(req.payload.email, "jwt");
-    res.status(200).json(req.payload);
+    console.log(req.headers, '-----------------------HEADERS');
+    console.log(req?.payload?.email, '-------------------jwt');
+    res.status(200).json(req?.payload);
   } catch (error) {
+    console.log(Obejct.keys(error), 'les clefs erreurs');
     next(error);
     return;
   }
