@@ -13,7 +13,7 @@ router.get('signUp', isNotAuthenticated, async (req, res, next) => {
   res.status(200).json({ message: 'access to sign up route' });
 });
 //
-router.post('/signup', isAuthenticated, async (req, res, next) => {
+router.post('/signup', async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
 
@@ -70,16 +70,23 @@ router.post('/signup', isAuthenticated, async (req, res, next) => {
 
     console.log(createdUser, 'new user');
 
-    // Send user object without password
-    const user = {
+    const payload = {
       _id: createdUser._id,
       username: createdUser.username,
       email: createdUser.email,
       isAdmin: createdUser.isAdmin,
     };
 
-    res.status(201).json(user);
+    const authToken = jsonwebtoken.sign(payload, process.env.TOKEN_SECRET, {
+      algorithm: 'HS256',
+      expiresIn: '1h',
+    });
+
+    res
+      .status(201)
+      .json({ authToken: authToken, message: 'Welcome ! You Signed up.' });
   } catch (error) {
+    console.log(error, 'error au sign up');
     next(error);
     return;
   }
