@@ -1,0 +1,11 @@
+{
+    "name" : "iron-bike",
+    "version": "0.1.0",
+    "private": true,
+    "scripts":{
+        "postinstall": "npm --cwd Iron-Bike-backend --production=false install",
+        "build": "npm --cwd Iron-Bike-backend start"
+    }
+
+
+}
