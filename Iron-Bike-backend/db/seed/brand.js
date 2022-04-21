@@ -134,7 +134,7 @@ const brands = [
   {
     name: "Merida",
     brandLogo:
-      "https://res.cloudinary.com/ironbike/image/upload/v1650278224/Products/Brand/5a10a8d39642de34b6b65d0c_rmmofe.png",
+      "https://res.cloudinary.com/ironbike/image/upload/v1650279655/Products/Brand/Merida__Unternehmen__logo.svg_v5pqcj.png",
     headquarters: "Taïwan",
     madeIn: "Taïwan",
     foundationYear: 1972,
