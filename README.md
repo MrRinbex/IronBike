@@ -1,5 +1,5 @@
 # IronBike E-Shop Api
-[http://localhost:3000](Click here to discover the IronBike website)  [https://ironbike.netlify.app/]
+[Click here to discover the IronBike website](https://ironbike.netlify.app/)  [https://ironbike.netlify.app/]
 
 # Getting Started with Create React App
 
