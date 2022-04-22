@@ -18,6 +18,7 @@ router.post('/signup', async (req, res, next) => {
     const { username, email, password } = req.body;
 
     // Check if email or password or name are provided as empty string
+
     if (email === '' || username === '' || password === '') {
       const error = SignAndLogErrors('none', email, username);
       res.status(406).json(error);
@@ -26,6 +27,7 @@ router.post('/signup', async (req, res, next) => {
     }
 
     // Check if email or password or username contains whitespace \s
+
     if (
       email.includes(' ') ||
       password.includes(' ') ||
@@ -36,6 +38,7 @@ router.post('/signup', async (req, res, next) => {
       return;
     }
     // Use regex to validate the email format
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!emailRegex.test(email)) {
       const error = SignAndLogErrors('email', email, username);
@@ -97,6 +100,7 @@ router.post('/login', async (req, res, next) => {
     const { email, password } = req.body;
 
     // Use regex to validate the email format
+    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!emailRegex.test(email)) {
       const error = SignAndLogErrors('email', email);
@@ -148,7 +152,7 @@ router.get('/verify', isAuthenticated, (req, res, next) => {
     console.log(req?.payload?.email, '-------------------jwt');
     res.status(200).json(req?.payload);
   } catch (error) {
-    console.log(Obejct.keys(error), 'les clefs erreurs');
+    console.log(Object.keys(error), 'les clefs errors');
     next(error);
     return;
   }

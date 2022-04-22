@@ -6,6 +6,4 @@
         "postinstall": "yarn --cwd Iron-Bike-backend --production=false install",
         "build": "yarn --cwd Iron-Bike-backend start"
     }
-
-
 }
