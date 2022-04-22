@@ -4,6 +4,7 @@ const { populate } = require("../models/Brand.model");
 const { Product } = require("../models/Product.model");
 
 // GET PRODUCT By id or slug !
+
 router.get("/:idOrSlug", async (req, res) => {
   const query = req.params.idOrSlug;
   try {
