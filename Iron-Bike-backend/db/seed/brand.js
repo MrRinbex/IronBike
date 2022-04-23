@@ -12,6 +12,22 @@ const brands = [
     foundationYear: 1988,
   },
   {
+    name: "Gorille Cycle",
+    brandLogo:
+      "https://res.cloudinary.com/ironbike/image/upload/v1650739608/Products/Brand/gorille_cycles-logotype-v2_ok_y5102t.jpg",
+    headquarters: "France",
+    madeIn: "France",
+    foundationYear: 2017,
+  },
+  {
+    name: "Commencal",
+    brandLogo:
+      "https://res.cloudinary.com/ironbike/image/upload/v1650740963/Products/Brand/logo-commencal-revendeur-iron-bike_zius38.jpg",
+    headquarters: "Andorra",
+    madeIn: "China",
+    foundationYear: 1999,
+  },
+  {
     name: "Willier Triestina",
     brandLogo:
       "https://res.cloudinary.com/ironbike/image/upload/v1649861921/Products/Brand/Wilier_triestina_logo_gvptdy.png",

@@ -26,7 +26,7 @@ const bikeSchema = new Schema({
   bikeBrand: String,
   categoryBike: {
     type: String,
-    enum: ["Road Bike", "Mountain Bike", "City Bike", "E-Bike", "Low Rider"],
+    enum: ["Road Bike", "Mountain Bike", "City Bike", "E-Bike", "Kid Bike"],
   },
   frameMaterials: {
     type: String,
