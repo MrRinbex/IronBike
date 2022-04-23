@@ -23,14 +23,14 @@ function getTokenFromHeaders(req) {
     ) {
       // Get the encoded token string and return it
       const token = req.headers.authorization.split(' ')[1];
-      console.log(token, 'LEEEEEE TOOOOOOOOOKEN');
+      console.log(token, 'The TOKEN');
 
       return token;
     }
-    console.log('<><<<<<<<<<<<     PAAAAAAAS DE TOOOOOOOKKEEENNN');
+    console.log('<><<<<<<<<<<<     No TOKEN');
     return null;
   } catch (err) {
-    console.log(err, 'erreur de getToken JWT MIDDLEWARE');
+    console.log(err, 'error de getToken JWT MIDDLEWARE');
   }
 }
 
