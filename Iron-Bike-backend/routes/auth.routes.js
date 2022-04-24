@@ -33,7 +33,7 @@ router.post('/signup', async (req, res, next) => {
       password.includes(' ') ||
       username.includes(' ')
     ) {
-      const error = SignAndLogErrors('whiteSpace', username, email);
+      const error = SignAndLogErrors('whiteSpace', email, username);
       res.status(406).json(error);
       return;
     }
@@ -42,22 +42,22 @@ router.post('/signup', async (req, res, next) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!emailRegex.test(email)) {
       const error = SignAndLogErrors('email', email, username);
-      res.status(406).json(error.message);
+      res.status(406).json(error);
       return;
     }
 
     const passwordRegex = /.{6,}/;
     if (!passwordRegex.test(password)) {
       const error = SignAndLogErrors('password');
-      res.status(406).json(error.message);
+      res.status(406).json(error);
       return;
     }
 
     const foundUser = await User.findOne({ email });
 
     if (foundUser) {
-      const error = SignAndLogErrors('exist', '', email);
-      res.status(406).json(error.message);
+      const error = SignAndLogErrors('exist', email, '');
+      res.status(406).json(error);
       return;
     }
 
@@ -100,11 +100,11 @@ router.post('/login', async (req, res, next) => {
     const { email, password } = req.body;
 
     // Use regex to validate the email format
-    
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!emailRegex.test(email)) {
       const error = SignAndLogErrors('email', email);
-      res.status(406).json(error.message);
+      res.status(406).json(error);
       return;
     }
 
@@ -113,7 +113,7 @@ router.post('/login', async (req, res, next) => {
     if (!foundUser) {
       const error = SignAndLogErrors('notFound', email);
       console.log(error, 'USER NOT FOUND');
-      res.status(401).json(error.message);
+      res.status(401).json(error);
       return;
     }
 
@@ -137,7 +137,7 @@ router.post('/login', async (req, res, next) => {
       return;
     } else {
       const error = SignAndLogErrors('wrong', email);
-      res.status(401).json(error.message);
+      res.status(401).json(error);
       return;
     }
   } catch (error) {
