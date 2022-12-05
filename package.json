@@ -6,9 +6,7 @@
     "node":"14.x"
   },
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
-    "deploy": "git subtree push --prefix Iron-Bike-backend heroku main"
+    "start": "node index.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
